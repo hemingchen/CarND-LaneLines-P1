@@ -23,25 +23,28 @@ The goals / steps of this project are the following:
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+Instead of modifying the original *draw\_lines* function, I put my pipeline - *mark\_lane\_on_image* in the cell right under "Build a Lane Finding Pipeline."
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]
+My pipeline consisted of 5 steps:
+1. convert to grayscale
+2. apply Gaussian blur 
+3. apply Canny edge detection
+4. apply mask
+5. run Hough lines to get the short lines
+6. extrapolate multiple short lines to generate two long lines that mark the lane using linear regression (implemented in *extrapolate\_lines* helper function)
+7. draw the extrapolated lines in red and overlay on top of the original image
+8. generate plots
 
 
 ### 2. Identify potential shortcomings with your current pipeline
 
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+1. First potential shortcoming is that the mask as well as some other parameters are hard coded in pixel numbers, which will not work if the resolution of input image changes.
+2. Another shortcoming is that the lane detection algorithm assumes straight lane marks therefore will not work when the cars enters a curved road.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+1. Change to ratio based masking (an other parameters) in order to work for images with different resolution than those used in the course.
+2. Try using color masking before grayscaling to better separate the lane markers (in white and yellow) from the background, which might also reduce the overall computing load in successive steps.
+3. Assume that lane markers can be curves and use higher dimensional regression when extrapolating the lane markers from short line segments.
 
-Another potential improvement could be to ...
