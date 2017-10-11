@@ -25,7 +25,7 @@ The goals / steps of this project are the following:
 
 Instead of modifying the original *draw\_lines* function, I put my pipeline - *mark\_lane\_on_image* in the cell right under "Build a Lane Finding Pipeline."
 
-My pipeline consisted of 5 steps:
+My pipeline consisted of 8 steps:
 1. convert to grayscale
 2. apply Gaussian blur 
 3. apply Canny edge detection
@@ -44,7 +44,7 @@ My pipeline consisted of 5 steps:
 
 ### 3. Suggest possible improvements to your pipeline
 
-1. Change to ratio based masking (an other parameters) in order to work for images with different resolution than those used in the course.
+1. Change to ratio based masking (also other parameters) in order to work for images with different resolution than those used in the course.
 2. Try using color masking before grayscaling to better separate the lane markers (in white and yellow) from the background, which might also reduce the overall computing load in successive steps.
 3. Assume that lane markers can be curves and use higher dimensional regression when extrapolating the lane markers from short line segments.
 
